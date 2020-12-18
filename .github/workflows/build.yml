@@ -1,4 +1,4 @@
-name: Caching with npm
+name: Deploy 
 
 on: push
 
@@ -22,3 +22,9 @@ jobs:
       run: |
         yarn 
         yarn build
+    
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
