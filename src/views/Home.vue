@@ -1,18 +1,29 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <v-list three-line flat>
+      <template v-for="item in list">
+        <v-list-item :key="item.title">
+          <v-list-item-content>
+            <v-list-item-title>{{item.title}}</v-list-item-title>
+            <v-list-item-subtitle>{{item.subtitle}}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+    </v-list>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  components: {},
+  data () {
+    return {
+      list: [
+        { title: 'title', subtitle: 'subtitle', to: '' },
+        { title: 'title2', subtitle: 'subtitle' }
+      ]
+    }
   }
 }
 </script>
