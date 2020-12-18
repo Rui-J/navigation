@@ -1,0 +1,22 @@
+name: build
+on:
+  push:[main]
+
+jobs:
+  build: Ubuntu-latest
+
+  setps:
+    - uses: actions/checkout@v2
+
+    - name: cache node modules
+    uses: actions/cache@v2
+    env: 
+      name: node_modules
+    path: node_modules
+    key: build-${{ hashFiles('**/package-lock.json') }}
+    
+    - name: Install Dependencies
+    run: npm install
+
+  - name: Build
+    run: npm build
